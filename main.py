@@ -89,8 +89,17 @@ def consultar_por_periodo():
     else:
         print("No hay notas en este período.")
  
-def consultar_nota_por_folio():
-    pass
+def consultar_por_folio():
+    """Consulta una nota específica por su folio"""
+    notas = cargar_notas()
+    for nota in notas:
+        print(f"Folio: {nota['Folio']} - Fecha: {nota['Fecha']}")
+    folio = input("Ingrese el folio de la nota a consultar: ")
+    for nota in notas:
+        if nota['Folio'] == folio and nota['Cancelada'] == "No":
+            print(nota)
+            return
+    print("Nota no encontrada o cancelada.")
  
 def cancelar_nota():
     pass
