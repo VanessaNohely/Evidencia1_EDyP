@@ -38,6 +38,10 @@ def exportar_a_excel(notas, nombre_archivo="reporte.xlsx"):
     df.to_excel(nombre_archivo, index=False)
     print(f"Reporte exportado como {nombre_archivo}")
 
+def generar_folio():
+    """Genera un folio único"""
+    return str(uuid.uuid4())[:8]
+
 
 def registrar_nota():
     pass
