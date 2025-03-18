@@ -75,8 +75,19 @@ def registrar_nota():
     guardar_notas(notas)
     print("Nota registrada con éxito.")
  
-def consultar_notas_por_periodo():
-    pass
+def consultar_por_periodo():
+    """Consulta notas en un período de tiempo y ofrece exportarlas a Excel"""
+    notas = cargar_notas()
+    fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
+    fecha_fin = input("Ingrese la fecha de fin (YYYY-MM-DD): ")
+    notas_filtradas = [nota for nota in notas if fecha_inicio <= nota['Fecha'] <= fecha_fin and nota['Cancelada'] == "No"]
+    if notas_filtradas:
+        for nota in notas_filtradas:
+            print(nota)
+        if input("¿Desea exportar a Excel? (s/n): ") == "s":
+            exportar_a_excel(notas_filtradas)
+    else:
+        print("No hay notas en este período.")
  
 def consultar_nota_por_folio():
     pass
