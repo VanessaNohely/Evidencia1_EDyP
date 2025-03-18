@@ -1,7 +1,9 @@
 
-"""Evidencia1_EDyP
+"""
+Evidencia1_EDyP
 
-Autor: Vanessa Nohely Arrambide Escamilla - 1980877"""
+Autor: Vanessa Nohely Arrambide Escamilla - 1980877
+"""
 
 """Librerías y Modulos"""
 import csv
@@ -9,6 +11,8 @@ import os
 import pandas as pd
 import uuid
 from datetime import datetime
+
+"""Funciones"""
 
 def cargar_notas():
     """Carga las notas desde un archivo CSV"""
@@ -73,7 +77,7 @@ def registrar_nota():
     notas.append({"Folio": folio, "Fecha": fecha, "Cliente": cliente, "Monto": monto_total, "Servicios": servicios, "Cancelada": "No"})
     guardar_notas(notas)
     print("Nota registrada con éxito.")
- 
+
 def consultar_por_periodo():
     """Consulta notas en un período de tiempo y ofrece exportarlas a Excel"""
     notas = cargar_notas()
@@ -87,7 +91,7 @@ def consultar_por_periodo():
             exportar_a_excel(notas_filtradas)
     else:
         print("No hay notas en este período.")
- 
+
 def consultar_por_folio():
     """Consulta una nota específica por su folio"""
     notas = cargar_notas()
@@ -99,7 +103,7 @@ def consultar_por_folio():
             print(nota)
             return
     print("Nota no encontrada o cancelada.")
- 
+
 def cancelar_nota():
     """Permite cancelar una nota, solicitando confirmación al usuario"""
     notas = cargar_notas()
@@ -117,7 +121,7 @@ def cancelar_nota():
                 print("La nota no fue cancelada.")
             return
     print("El folio ingresado no existe o la nota ya está cancelada.")
- 
+
 def recuperar_nota():
     """Permite al usuario recuperar una nota previamente cancelada"""
     notas = cargar_notas()
@@ -139,7 +143,8 @@ def recuperar_nota():
             print(f"La nota con folio {folio} ha sido recuperada con éxito.")
             return
     print("No se encontró la nota en el sistema o no está cancelada.")
- 
+
+
 """Menú Principal"""
 def menu_principal():
     """Despliega el menú principal"""
