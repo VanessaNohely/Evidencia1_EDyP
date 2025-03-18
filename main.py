@@ -51,7 +51,29 @@ def validar_monto(monto):
     return monto > 0
 
 def registrar_nota():
-    pass
+    """Registra una nueva nota con múltiples servicios"""
+    notas = cargar_notas()
+    folio = generar_folio()
+    fecha = input("Ingrese la fecha (YYYY-MM-DD): ")
+    if not validar_fecha(fecha):
+        print("Fecha inválida.")
+        return
+    cliente = input("Ingrese el nombre del cliente: ")
+    servicios = []
+    while True:
+        servicio = input("Ingrese el nombre del servicio realizado: ")
+        costo = float(input("Ingrese el costo del servicio: "))
+        if not validar_monto(costo):
+            print("Costo inválido, debe ser mayor que 0.")
+            continue
+        servicios.append({"Servicio": servicio, "Costo": costo})
+        continuar = input("¿Desea agregar otro servicio? (s/n): ")
+        if continuar.lower() != "s":
+            break
+    monto_total = sum(s["Costo"] for s in servicios)
+    notas.append({"Folio": folio, "Fecha": fecha, "Cliente": cliente, "Monto": monto_total, "Servicios": servicios, "Cancelada": "No"})
+    guardar_notas(notas)
+    print("Nota registrada con éxito.")
  
 def consultar_notas_por_periodo():
     pass
