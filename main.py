@@ -42,6 +42,9 @@ def generar_folio():
     """Genera un folio único"""
     return str(uuid.uuid4())[:8]
 
+def validar_fecha(fecha):
+    """Verifica que la fecha no sea futura"""
+    return datetime.strptime(fecha, "%Y-%m-%d") <= datetime.now()
 
 def registrar_nota():
     pass
