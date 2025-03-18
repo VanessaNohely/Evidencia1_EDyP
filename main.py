@@ -31,7 +31,14 @@ def guardar_notas(notas):
         writer.writeheader()
         for nota in notas:
             writer.writerow({**nota, "Servicios": str(nota.get("Servicios", []))})
-            
+
+def exportar_a_excel(notas, nombre_archivo="reporte.xlsx"):
+    """Exporta las notas a un archivo de Excel"""
+    df = pd.DataFrame(notas)
+    df.to_excel(nombre_archivo, index=False)
+    print(f"Reporte exportado como {nombre_archivo}")
+
+
 def registrar_nota():
     pass
  
