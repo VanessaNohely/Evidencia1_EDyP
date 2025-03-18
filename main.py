@@ -23,6 +23,15 @@ def cargar_notas():
                 notas.append(row)
     return notas
 
+def guardar_notas(notas):
+    """Guarda las notas en un archivo CSV"""
+    with open("notas.csv", mode="w", newline="", encoding="utf-8") as file:
+        fieldnames = ["Folio", "Fecha", "Cliente", "Monto", "Servicios", "Cancelada"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        for nota in notas:
+            writer.writerow({**nota, "Servicios": str(nota.get("Servicios", []))})
+            
 def registrar_nota():
     pass
  
