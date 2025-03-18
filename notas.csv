@@ -1,0 +1,3 @@
+Folio,Fecha,Cliente,Monto,Servicios,Cancelada
+2bb5010e,2025-01-13,Juan Lopez,1300.0,"[{'Servicio': 'Pintura', 'Costo': 400.0}, {'Servicio': 'Puerta', 'Costo': 900.0}]",No
+138145c0,2020-02-17,Carlos Perez,890.0,"[{'Servicio': 'Instalacion de ventana', 'Costo': 890.0}]",No
