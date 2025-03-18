@@ -11,6 +11,17 @@ import pandas as pd
 import uuid
 from datetime import datetime
 
+def cargar_notas():
+    """Carga las notas desde un archivo CSV"""
+    notas = []
+    if os.path.exists("notas.csv"):
+        with open("notas.csv", mode="r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                row['Monto'] = float(row['Monto'])
+                row['Servicios'] = eval(row['Servicios']) if 'Servicios' in row and row['Servicios'] else []
+                notas.append(row)
+    return notas
 
 def registrar_nota():
     pass
