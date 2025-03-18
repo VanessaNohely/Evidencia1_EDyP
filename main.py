@@ -46,6 +46,10 @@ def validar_fecha(fecha):
     """Verifica que la fecha no sea futura"""
     return datetime.strptime(fecha, "%Y-%m-%d") <= datetime.now()
 
+def validar_monto(monto):
+    """Valida que el monto sea mayor que 0"""
+    return monto > 0
+
 def registrar_nota():
     pass
  
