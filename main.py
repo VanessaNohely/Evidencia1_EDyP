@@ -102,7 +102,22 @@ def consultar_por_folio():
     print("Nota no encontrada o cancelada.")
  
 def cancelar_nota():
-    pass
+    """Permite cancelar una nota, solicitando confirmación al usuario"""
+    notas = cargar_notas()
+    folio = input("Ingrese el folio de la nota a cancelar: ")
+    for nota in notas:
+        if nota['Folio'] == folio and nota['Cancelada'] == 'No':
+            print("Detalles de la nota:")
+            print(nota)
+            confirmacion = input("¿Está seguro de cancelar esta nota? (s/n): ")
+            if confirmacion.lower() == 's':
+                nota['Cancelada'] = 'Si'
+                guardar_notas(notas)
+                print("La nota ha sido cancelada exitosamente.")
+            else:
+                print("La nota no fue cancelada.")
+            return
+    print("El folio ingresado no existe o la nota ya está cancelada.")
  
 def recuperar_nota():
     pass
