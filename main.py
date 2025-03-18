@@ -120,7 +120,26 @@ def cancelar_nota():
     print("El folio ingresado no existe o la nota ya está cancelada.")
  
 def recuperar_nota():
-    pass
+    """Permite al usuario recuperar una nota previamente cancelada"""
+    notas = cargar_notas()
+    notas_canceladas = [nota for nota in notas if nota['Cancelada'].strip().lower() == "si"]
+    if not notas_canceladas:
+        print("No hay notas canceladas disponibles para recuperar.")
+        return
+    print("\nNotas canceladas disponibles para recuperar:")
+    for nota in notas_canceladas:
+        print(f"Folio: {nota['Folio']}, Fecha: {nota['Fecha']}, Cliente: {nota['Cliente']}, Monto: {nota['Monto']}")
+    folio = input("\nIngrese el folio de la nota que desea recuperar (o presione Enter para cancelar): ")
+    if not folio:
+        print("Operación cancelada. No se recuperó ninguna nota.")
+        return
+    for nota in notas:
+        if nota["Folio"] == folio and nota["Cancelada"].strip().lower() == "si":
+            nota["Cancelada"] = "No"
+            guardar_notas(notas)
+            print(f"La nota con folio {folio} ha sido recuperada con éxito.")
+            return
+    print("No se encontró la nota en el sistema o no está cancelada.")
  
 """Menú Principal"""
 def menu_principal():
