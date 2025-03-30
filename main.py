@@ -146,6 +146,21 @@ def recuperar_nota():
             return
     print("No se encontró la nota en el sistema o no está cancelada.")
 
+def filtrarNotasEstadisticas():
+    """Se obtienen los datos necesarios para filtrar notas para analisis estadísticos."""
+    notas = cargar_notas()
+    fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD) o presione Enter para omitir: ")
+    fecha_fin = input("Ingrese la fecha de fin (YYYY-MM-DD) o presione Enter para omitir: ")
+
+    if not fecha_inicio:
+        fecha_inicio = min(nota['Fecha'] for nota in notas)
+    if not fecha_fin:
+        fecha_fin = max(nota['Fecha'] for nota in notas)
+    
+    notas_filtradas = [nota for nota in notas if fecha_inicio <= nota['Fecha'] <= fecha_fin and nota['Cancelada'] == "No"]
+
+    return notas_filtradas
+
 
 """Menú Principal"""
 def menu_principal():
