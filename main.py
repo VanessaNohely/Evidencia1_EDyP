@@ -161,6 +161,25 @@ def filtrarNotasEstadisticas():
 
     return notas_filtradas
 
+def analizar_tendencias_centrales():
+    """Calcula y muestra las tendencias centrales y distribución."""
+    notas = filtrarNotasEstadisticas()
+
+    montos = [nota['Monto'] for nota in notas]
+
+    if not montos:
+        print("No hay datos disponibles para el período seleccionado.")
+        return
+    print("\nAnálisis de tendencias centrales y distribución:")
+    print(f"Conteo: {len(montos)}")
+    print(f"Media: {mean(montos)}")
+    print(f"Mediana: {median(montos)}")
+    try:
+        print(f"Moda: {mode(montos)}")
+    except:
+        print("Moda: No hay una moda única")
+
+
 
 """Menú Principal"""
 def menu_principal():
