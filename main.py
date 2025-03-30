@@ -208,7 +208,8 @@ def menu_principal():
         print("2. Consultas y reportes")
         print("3. Cancelar una nota")
         print("4. Recuperar una nota")
-        print("5. Salir del sistema")
+        print("5. Análisis estadístico de los totales por nota")
+        print("6. Salir del sistema")
         opcion = input("Seleccione una opción: ")
         if opcion == "1":
             registrar_nota()
@@ -216,19 +217,37 @@ def menu_principal():
             print("\nMenú Principal>Consultas y reportes")
             print("1. Consulta por período")
             print("2. Consulta por folio")
+            print("3. Regresar al menú principal")
             sub_opcion = input("Seleccione una opción: ")
             if sub_opcion == "1":
                 consultar_por_periodo()
             elif sub_opcion == "2":
                 consultar_por_folio()
+            elif sub_opcion == "3":
+                pass
+            else:
+                print(f"Opción '{sub_opcion}' no válida.")
         elif opcion == "3":
             cancelar_nota()
         elif opcion == "4":
             recuperar_nota()
         elif opcion == "5":
+            print("\nMenú Principal>Análisis estadístico de los totales por nota")
+            print("1. Tendencias centrales")
+            print("2. Dispersión y distribución")
+            print("3. Regresar al menú principal")
+            sub_opcion = input("Seleccione una opción: ")
+            if sub_opcion == "1":
+                analizar_tendencias_centrales()
+            elif sub_opcion == "2":
+                analizar_dispersion_y_distribucion()
+            elif sub_opcion == "3":
+                pass
+            else:
+                print(f"Opción '{sub_opcion}' no válida.")
+        elif opcion == "6":
             print("Saliendo...")
             break
         else:
-            print("Opción inválida.")
-
+            print(f"Opción '{opcion}' inválida.")
 menu_principal()
