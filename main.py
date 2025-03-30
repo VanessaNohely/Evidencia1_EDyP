@@ -9,6 +9,8 @@ Autor: Vanessa Nohely Arrambide Escamilla - 1980877
 import csv
 import os
 import pandas as pd
+from statistics import mean, median, mode
+import numpy as np
 import uuid
 from datetime import datetime
 
