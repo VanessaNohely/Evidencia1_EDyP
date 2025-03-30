@@ -179,6 +179,24 @@ def analizar_tendencias_centrales():
     except:
         print("Moda: No hay una moda única")
 
+def analizar_dispersion_y_distribucion():
+    """Calcula y muestra la dispersión y distribución"""
+    notas = filtrarNotasEstadisticas()
+    montos = [nota['Monto'] for nota in notas]
+    if not montos:
+        print("No hay datos disponibles para el período seleccionado.")
+        return
+    print("\nAnálisis de dispersión y distribución:")
+    print(f"Varianza: {np.var(montos, ddof=1)}")
+    print(f"Desviación estándar: {np.std(montos, ddof=1)}")
+    q1 = np.percentile(montos, 25)
+    q3 = np.percentile(montos, 75)
+    print(f"Primer cuartil (Q1): {q1}")
+    print(f"Mediana (Q2): {median(montos)}")
+    print(f"Tercer cuartil (Q3): {q3}")
+    print(f"Rango intercuartílico (IQR): {q3 - q1}")
+
+
 
 
 """Menú Principal"""
